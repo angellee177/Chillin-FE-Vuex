@@ -2,14 +2,12 @@
 import axios from 'axios';
 
 const state = {
-    images      : [],
-    searchList  : []
+    images      : []
 };
 
 // parse the data to Todos.vue
 const getters = {
-    imagesFeeds       : (state) => state.images,
-    // displaySearchList : (state) => state.searchList, 
+    imagesFeeds       : (state) => state.images
 };
 
 const actions = {
@@ -21,18 +19,11 @@ const actions = {
             const response = await axios.get(`https://chillin-api.herokuapp.com/api/v1/feed/search?tags=${images}`);
             commit('listFeed', response.data.result);
         }
-    },
-    // async searchImages({ commit }, images) {
-      
-    //     const response = await axios.get(`https://chillin-api.herokuapp.com/api/v1/feed/search?tags=${images}`);
-
-    //     commit('listSearch', response.data.result);
-    // }
+    }
 };
 
 const mutations = {
-    listFeed    : (state, images)       => (state.images        = images),
-    // listSearch  : (state, searchList)   => (state.images        = images)
+    listFeed    : (state, images)       => (state.images        = images)
 };
 
 export default {
